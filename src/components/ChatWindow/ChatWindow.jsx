@@ -9,7 +9,7 @@ import {
   getConversations,
 } from "../../backend/api";
 import "./ChatWindow.css";
-import BrandIcon from '../../assets/brand.svg';
+import BrandIcon from "../../assets/brand.svg";
 
 const ChatWindow = ({ setConversations }) => {
   const [input, setInput] = useState("");
@@ -89,7 +89,9 @@ const ChatWindow = ({ setConversations }) => {
 
   return (
     <div className="chat-window">
-      <img src={BrandIcon} alt="Brand" className="brand-icon-chat" />
+      <div className="brand-img-div">
+        <img src={BrandIcon} alt="Brand" className="brand-icon-chat" />
+      </div>
       <div className="chat-body">
         {localConversations.map((conv, index) => (
           <div key={index} className="chat-response">
@@ -102,11 +104,11 @@ const ChatWindow = ({ setConversations }) => {
             </p>
             <div className="feedback">
               <FaThumbsUp
-                className={`icon ${conv.rating > 0 ? 'filled' : 'outline'}`}
+                className={`icon ${conv.rating > 0 ? "filled" : "outline"}`}
                 onClick={() => setRatingIndex(index)}
               />
               <FaThumbsDown
-                className={`icon ${conv.feedback ? 'filled' : 'outline'}`}
+                className={`icon ${conv.feedback ? "filled" : "outline"}`}
                 onClick={() => handleFeedback(index)}
               />
               {index === ratingIndex && (

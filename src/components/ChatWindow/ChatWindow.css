@@ -2,34 +2,58 @@
   display: none;
 }
 .chat-window {
-  flex: 1;
   display: flex;
   flex-direction: column;
+  height: 100vh;
   padding: 20px;
+  position: relative;
+}
+
+.chat-body {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 80px;
+  padding-top: 50px;
 }
 
 .chat-input {
   display: flex;
   align-items: center;
-  position: relative;
+  position: fixed;
   bottom: 0;
-  right: 0;
-  width: 100%;
+  left: 0;
+  width: calc(100vw - 380px) !important;
+  padding: 10px 20px;
+  background-color: white; /* or any background color matching the app theme */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .chat-input input {
   flex: 1;
   padding: 10px;
   margin-right: 10px;
+  outline: none;
+  border: var(--color-secondary) solid 1px;
 }
 
 .chat-input button {
-  padding: 10px;
+  padding: 8px;
+  margin-inline-start: 1rem;
+  border: none;
+  background-color: var(--color-secondary);
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .chat-body {
   flex: 1;
   overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.chat-body::-webkit-scrollbar {
+  display: none;
 }
 
 .chat-response {
@@ -50,7 +74,7 @@
 }
 
 .feedback .filled {
-  color: #9785BA;
+  color: #9785ba;
 }
 
 .feedback .outline {
@@ -58,6 +82,11 @@
 }
 
 @media (min-width: 768px) {
+  .brand-img-div {
+    width: 100%;
+    background: whitesmoke;
+    position: fixed;
+  }
   .brand-icon-chat {
     display: block;
     width: 80px;
@@ -66,5 +95,14 @@
   .chat-window {
     margin-left: 300px;
   }
+
+  .chat-input {
+    margin-left: 300px;
+  }
 }
 
+@media (max-width: 768px) {
+  .chat-input {
+    width: calc(100vw - 10%) !important;
+  }
+}
