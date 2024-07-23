@@ -119,7 +119,7 @@ const ChatWindow = ({ setConversations }) => {
               ) : (
                 <p></p>
               )}
-              {conv.feedback && <p>Feedback: {conv.feedback}</p>}
+              {conv.feedback.length > 0 && <p>Feedback: {conv.feedback}</p>}
             </div>
           </div>
         ))}
