@@ -59,6 +59,7 @@ const ChatWindow = ({ setConversations }) => {
   };
 
   const handleAsk = () => {
+    const createdAt = new Date().toISOString(); // Add created_at timestamp
     const requestTime = getCurrentTime();
     const response = staticData.find((item) =>
       item.question.toLowerCase().includes(input.toLowerCase())
@@ -71,6 +72,7 @@ const ChatWindow = ({ setConversations }) => {
       feedback: "",
       requestTime: requestTime, // Add request time
       responseTime: responseTime, // Add response time
+      createdAt: createdAt // Add created_at timestamp
     };
     addConversation(newConversation);
     const updatedConversations = getConversations();
@@ -120,7 +122,7 @@ const ChatWindow = ({ setConversations }) => {
           <div key={index} className="chat-response">
             <div className="request">
               <div className="request-body">
-              <img src={UserIcon} alt="User" />
+                <img src={UserIcon} alt="User" />
                 <div>
                   <p>
                     <strong>You</strong>
@@ -133,7 +135,6 @@ const ChatWindow = ({ setConversations }) => {
 
             <div className="response">
               <div className="response-body">
-                
                 <img src={GptIcon} alt="Gpt" />
                 <div>
                   <p>
