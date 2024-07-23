@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import staticData from "../../backend/staticData";
 import FeedbackModal from "../FeedbackModal/FeedbackModal";
@@ -22,6 +22,7 @@ const ChatWindow = ({ setConversations }) => {
   const [typingResponse, setTypingResponse] = useState("");
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [ratingIndex, setRatingIndex] = useState(null);
+  const chatBodyRef = useRef(null);
 
   useEffect(() => {
     const conversations = getConversations();
@@ -40,6 +41,13 @@ const ChatWindow = ({ setConversations }) => {
       }
     }
   }, [typingResponse, currentIndex]);
+
+  useEffect(() => {
+    // Scroll to bottom when localConversations change
+    if (chatBodyRef.current) {
+      chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
+    }
+  }, [localConversations]);
 
   const getCurrentTime = () => {
     const now = new Date();
@@ -107,12 +115,12 @@ const ChatWindow = ({ setConversations }) => {
       <div className="brand-img-div">
         <img src={BrandIcon} alt="Brand" className="brand-icon-chat" />
       </div>
-      <div className="chat-body">
+      <div className="chat-body" ref={chatBodyRef}>
         {localConversations.map((conv, index) => (
           <div key={index} className="chat-response">
             <div className="request">
               <div className="request-body">
-                <img src={GptIcon} alt="Gpt" />
+              <img src={UserIcon} alt="User" />
                 <div>
                   <p>
                     <strong>You</strong>
@@ -125,7 +133,8 @@ const ChatWindow = ({ setConversations }) => {
 
             <div className="response">
               <div className="response-body">
-                <img src={UserIcon} alt="User" />
+                
+                <img src={GptIcon} alt="Gpt" />
                 <div>
                   <p>
                     <strong>Bot AI</strong>{" "}

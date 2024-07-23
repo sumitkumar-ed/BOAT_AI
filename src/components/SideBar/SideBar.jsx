@@ -10,6 +10,20 @@ const SideBar = ({
   onViewPastConversations,
   onClose,
 }) => {
+
+    // Handles closing the sidebar and invoking the new chat callback
+    const handleNewChat = () => {
+      onNewChat();
+      onClose(); // Close the sidebar
+    };
+  
+    // Handles closing the sidebar and invoking the past conversations callback
+    const handleViewPastConversations = () => {
+      onViewPastConversations();
+      onClose(); // Close the sidebar
+    };
+
+
   return (
     <div className={`sidebar ${isVisible ? "active" : ""}`}>
       <img
@@ -22,9 +36,9 @@ const SideBar = ({
       <div className="sidebar-header">
         <img src={GptIcon} alt="gpt" className="gpt-icon" />
         <p>New Chat</p>
-        <FaEdit className="edit-icon" onClick={onNewChat} />
+        <FaEdit className="edit-icon" onClick={handleNewChat} />
       </div>
-      <button onClick={onViewPastConversations}>Past Conversations</button>
+      <button onClick={handleViewPastConversations}>Past Conversations</button>
     </div>
   );
 };
