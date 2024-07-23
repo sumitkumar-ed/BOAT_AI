@@ -1,0 +1,41 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+}
+
+.hamburger-icon {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+}
+
+.brand-icon {
+    width: 100px; /* Adjust the size as needed */
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background-color: #ffffff;
+        z-index: 99;
+    }
+}
+
+@media (min-width: 768px) {
+    .header {
+        display: none;
+    }
+}

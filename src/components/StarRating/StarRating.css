@@ -1,0 +1,26 @@
+.rating {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.stars {
+  display: flex;
+  justify-content: start;
+  margin: 5px 0;
+}
+
+.star {
+  font-size: 30px;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.star.filled {
+  color: #bface2;
+}
+
+.star:hover {
+  color: #d7c7f4;
+}

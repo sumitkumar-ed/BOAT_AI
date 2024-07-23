@@ -1,0 +1,57 @@
+.past-conversations {
+    padding: 20px;
+}
+
+.filter {
+    margin-bottom: 20px;
+    align-self: center;
+}
+
+.filter label {
+    margin-right: 10px;
+}
+
+.conversations {
+    display: flex;
+    flex-direction: column;
+}
+
+.conversation {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.rating {
+    margin: 10px 0;
+    justify-content: start;
+    align-items: center;
+}
+.rating-text{
+    margin-right: 10px;
+}
+
+.star {
+    font-size: 20px;
+    color: #ddd;
+    transition: color 0.2s;
+}
+
+.star.filled {
+    color: #BFACE2;
+}
+
+.star:hover {
+    color: #D7C7F4;
+}
+
+@media (max-width: 768px) {
+    .past-conversations {
+       margin-top: 50px;
+    }
+}
+
+@media (min-width: 768px) {
+    .past-conversations {
+        margin-left: 300px;
+      }
+}
