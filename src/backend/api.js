@@ -29,5 +29,5 @@ export const updateConversation = (index, updatedConversation) => {
 export const filterConversationsByRating = (rating) => {
   const conversations = getConversations();
   if (!rating) return conversations;
-  return conversations.filter((conv) => conv.rating === `${rating} stars`);
+  return conversations.filter((conv) => conv.rating === parseInt(rating, 10));
 };
