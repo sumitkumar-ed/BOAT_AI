@@ -14,8 +14,36 @@
     background: white;
     padding: 20px;
     border-radius: 8px;
-    width: 300px;
+    width: max-content;
     position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content h2 {
+    font-size: 14px;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+}
+
+.modal-content textarea {
+    width: 40vw;
+    height: 150px;
+}
+
+.modal-content button {
+    width: max-content;
+    background-color: var(--color-secondary);
+    border: none;
+    color: gray;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1rem;
+    font-size: 12px;
+    margin: 10px;
+    cursor: pointer;
+    align-self: flex-end;
 }
 
 .close {
@@ -23,6 +51,7 @@
     top: 10px;
     right: 10px;
     cursor: pointer;
+    font-size: larger;
 }
 
 .stars {
@@ -44,4 +73,10 @@
 
 .star:hover {
     color: #D7C7F4;
+}
+
+.bulb-icon {
+    margin-right: 8px;
+    font-size: 18px;
+    color: #9785BA;
 }

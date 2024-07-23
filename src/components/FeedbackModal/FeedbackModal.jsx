@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaLightbulb } from 'react-icons/fa';
 import './FeedbackModal.css';
 
 const FeedbackModal = ({ onSubmit, onClose }) => {
@@ -13,7 +14,7 @@ const FeedbackModal = ({ onSubmit, onClose }) => {
         <div className="modal">
             <div className="modal-content">
                 <span className="close" onClick={onClose}>&times;</span>
-                <h2>Provide Feedback</h2>
+                <h2><FaLightbulb className="bulb-icon" /> Provide Additional Feedback</h2>
                 <textarea 
                     value={feedback}
                     onChange={(e) => setFeedback(e.target.value)}

@@ -41,6 +41,22 @@
   margin-right: 10px;
 }
 
+.feedback .icon {
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 16px;
+  float: right;
+  margin-bottom: 10px;
+}
+
+.feedback .filled {
+  color: #9785BA;
+}
+
+.feedback .outline {
+  color: #ccc;
+}
+
 @media (min-width: 768px) {
   .brand-icon-chat {
     display: block;

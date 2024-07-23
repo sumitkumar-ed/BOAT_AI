@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import staticData from "../../backend/staticData";
 import FeedbackModal from "../FeedbackModal/FeedbackModal";
-import StarRating from "../StarRating/StarRating"; // Import the StarRating component
+import StarRating from "../StarRating/StarRating";
 import {
   addConversation,
   updateConversation,
@@ -18,7 +19,7 @@ const ChatWindow = ({ setConversations }) => {
   const [feedbackType, setFeedbackType] = useState("");
   const [typingResponse, setTypingResponse] = useState("");
   const [currentIndex, setCurrentIndex] = useState(-1);
-  const [ratingIndex, setRatingIndex] = useState(null); // Track which conversation is being rated
+  const [ratingIndex, setRatingIndex] = useState(null);
 
   useEffect(() => {
     const conversations = getConversations();
@@ -32,7 +33,7 @@ const ChatWindow = ({ setConversations }) => {
       if (typingResponse.length < response.length) {
         const timer = setTimeout(() => {
           setTypingResponse(response.slice(0, typingResponse.length + 1));
-        }, 50); // Adjust typing speed here
+        }, 50);
         return () => clearTimeout(timer);
       }
     }
@@ -54,8 +55,8 @@ const ChatWindow = ({ setConversations }) => {
     setConversations(updatedConversations);
     setInput("");
     setTypingResponse("");
-    setCurrentIndex(updatedConversations.length - 1); // Set the index to the last added conversation
-    setRatingIndex(null); // Reset rating index
+    setCurrentIndex(updatedConversations.length - 1);
+    setRatingIndex(null);
   };
 
   const handleFeedback = (index) => {
@@ -83,12 +84,12 @@ const ChatWindow = ({ setConversations }) => {
     const updatedConversations = getConversations();
     setLocalConversations(updatedConversations);
     setConversations(updatedConversations);
-    setRatingIndex(null); // Hide star rating component after rating
+    setRatingIndex(null);
   };
 
   return (
     <div className="chat-window">
-    <img src={BrandIcon} alt="Brand" className="brand-icon-chat" />
+      <img src={BrandIcon} alt="Brand" className="brand-icon-chat" />
       <div className="chat-body">
         {localConversations.map((conv, index) => (
           <div key={index} className="chat-response">
@@ -100,12 +101,14 @@ const ChatWindow = ({ setConversations }) => {
               {index === currentIndex ? typingResponse : conv.response}
             </p>
             <div className="feedback">
-              <button onClick={() => setRatingIndex(index)}>
-                Rate this response
-              </button>
-              <button onClick={() => handleFeedback(index)}>
-                Provide feedback
-              </button>
+              <FaThumbsUp
+                className={`icon ${conv.rating > 0 ? 'filled' : 'outline'}`}
+                onClick={() => setRatingIndex(index)}
+              />
+              <FaThumbsDown
+                className={`icon ${conv.feedback ? 'filled' : 'outline'}`}
+                onClick={() => handleFeedback(index)}
+              />
               {index === ratingIndex && (
                 <StarRating
                   initialRating={conv.rating}
