@@ -1,7 +1,10 @@
 :root {
-    /* Global variables to be defined here */
-    --color-primary: #9785BA;
-    --color-secondary: #D7C7F4;
-    --color-black: #121212;
-    --color-white: #ffffff;
-  }
+  /* Global variables to be defined here */
+  --color-primary: #9785ba;
+  --color-secondary: #d7c7f4;
+
+  --color-black: #121212;
+  --color-white: #ffffff;
+
+  --gradient-primary: linear-gradient(to right, #ffffff 100%, #9785ba 100%);
+}

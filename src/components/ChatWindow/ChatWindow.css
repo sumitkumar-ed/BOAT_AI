@@ -16,6 +16,29 @@
   padding-top: 50px;
 }
 
+.request,
+.response {
+  background-color: var(--gradient-primary);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.request-body,
+.response-body {
+  display: flex;
+  align-items: center;
+}
+
+.response-body img,
+.request-body img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
 .chat-input {
   display: flex;
   align-items: center;
@@ -65,12 +88,19 @@
   margin-right: 10px;
 }
 
+.feedback-button {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-left: 40px;
+}
+
 .feedback .icon {
   cursor: pointer;
   margin-right: 10px;
   font-size: 16px;
-  float: right;
-  margin-bottom: 10px;
+  /* float: right; */
+  margin-left: 10px;
 }
 
 .feedback .filled {
@@ -81,6 +111,12 @@
   color: #ccc;
 }
 
+.feedback-result{
+  margin-left: 40px;
+}
+.time{
+  font-size: 12px;
+}
 @media (min-width: 768px) {
   .brand-img-div {
     width: 100%;
