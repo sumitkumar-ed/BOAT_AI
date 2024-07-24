@@ -184,4 +184,8 @@
   .chat-input {
     width: calc(100vw - 10%) !important;
   }
+
+  .cards {
+    grid-template-columns: 1fr !important;
+  }
 }
