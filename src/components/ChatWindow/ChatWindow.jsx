@@ -51,10 +51,10 @@ const ChatWindow = ({ setConversations }) => {
 
   const getCurrentTime = () => {
     const now = new Date();
-    return now.toLocaleTimeString([], { 
-      hour: '2-digit', 
-      minute: '2-digit', 
-      hour12: true // Ensures the time is in 12-hour format with AM/PM
+    return now.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true, // Ensures the time is in 12-hour format with AM/PM
     });
   };
 
@@ -72,7 +72,7 @@ const ChatWindow = ({ setConversations }) => {
       feedback: "",
       requestTime: requestTime, // Add request time
       responseTime: responseTime, // Add response time
-      createdAt: createdAt // Add created_at timestamp
+      createdAt: createdAt, // Add created_at timestamp
     };
     addConversation(newConversation);
     const updatedConversations = getConversations();
@@ -114,77 +114,107 @@ const ChatWindow = ({ setConversations }) => {
 
   return (
     <div className="chat-window">
-      <div className="brand-img-div">
-        <img src={BrandIcon} alt="Brand" className="brand-icon-chat" />
-      </div>
-      <div className="chat-body" ref={chatBodyRef}>
-        {localConversations.map((conv, index) => (
-          <div key={index} className="chat-response">
-            <div className="request">
-              <div className="request-body">
-                <img src={UserIcon} alt="User" />
-                <div>
-                  <p>
-                    <strong>You</strong>
-                  </p>
-                  {conv.question}
-                  <p className="time">{conv.requestTime}</p>
-                </div>
+      {localConversations.length === 0 ? (
+        <div className="landingView">
+          <div className="content">
+            <img src={GptIcon} alt="Gpt" />
+            <div className="cards">
+              <div className="card">
+                <h5>Hi, what is the weather</h5>
+                <p>Get immediate AI generated response</p>
               </div>
-            </div>
-
-            <div className="response">
-              <div className="response-body">
-                <img src={GptIcon} alt="Gpt" />
-                <div>
-                  <p>
-                    <strong>Bot AI</strong>{" "}
-                  </p>
-                  <div>
-                    {index === currentIndex ? typingResponse : conv.response}
-                  </div>
-                </div>
+              <div className="card">
+                <h5>Hi, what is my location</h5>
+                <p>Get immediate AI generated response</p>
               </div>
-              <div className="feedback">
-                <div className="feedback-button">
-                  <p className="time">{conv.responseTime}</p>
-                  <div>
-                    <FaThumbsUp
-                      className={`icon ${
-                        conv.rating > 0 ? "filled" : "outline"
-                      }`}
-                      onClick={() => setRatingIndex(index)}
-                    />
-                    <FaThumbsDown
-                      className={`icon ${conv.feedback ? "filled" : "outline"}`}
-                      onClick={() => handleFeedback(index)}
-                    />
-                  </div>
-                </div>
-                <div className="feedback-result">
-                  {index === ratingIndex && (
-                    <StarRating
-                      initialRating={conv.rating}
-                      onRating={(rating) => handleRating(index, rating)}
-                    />
-                  )}
-                  {conv.rating > 0 ? (
-                    <div className="stars">
-                      <StarRating
-                        initialRating={conv.rating}
-                        onRating={() => {}}
-                      />
-                    </div>
-                  ) : (
-                    <p></p>
-                  )}
-                  {conv.feedback.length > 0 && <p>Feedback: {conv.feedback}</p>}
-                </div>
+              <div className="card">
+                <h5>Hi, what is the temperature</h5>
+                <p>Get immediate AI generated response</p>
+              </div>
+              <div className="card">
+                <h5>Hi, how are you</h5>
+                <p>Get immediate AI generated response</p>
               </div>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ) : (
+        <div className="chat-body" ref={chatBodyRef}>
+          {localConversations.map((conv, index) => (
+            <div key={index} className="chat-response">
+              <div className="request">
+                <div className="request-body">
+                  <img src={UserIcon} alt="User" />
+                  <div>
+                    <p>
+                      <strong>You</strong>
+                    </p>
+                    {conv.question}
+                    <p className="time">{conv.requestTime}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="response">
+                <div className="response-body">
+                  <img src={GptIcon} alt="Gpt" />
+                  <div>
+                    <p>
+                      <strong>Bot AI</strong>{" "}
+                    </p>
+                    <div>
+                      {index === currentIndex
+                        ? typingResponse
+                        : conv.response}
+                    </div>
+                  </div>
+                </div>
+                <div className="feedback">
+                  <div className="feedback-button">
+                    <p className="time">{conv.responseTime}</p>
+                    <div>
+                      <FaThumbsUp
+                        className={`icon ${
+                          conv.rating > 0 ? "filled" : "outline"
+                        }`}
+                        onClick={() => setRatingIndex(index)}
+                      />
+                      <FaThumbsDown
+                        className={`icon ${
+                          conv.feedback ? "filled" : "outline"
+                        }`}
+                        onClick={() => handleFeedback(index)}
+                      />
+                    </div>
+                  </div>
+                  <div className="feedback-result">
+                    {index === ratingIndex && (
+                      <StarRating
+                        initialRating={conv.rating}
+                        onRating={(rating) => handleRating(index, rating)}
+                      />
+                    )}
+                    {conv.rating > 0 ? (
+                      <div className="stars">
+                        <StarRating
+                          initialRating={conv.rating}
+                          onRating={() => {}}
+                        />
+                      </div>
+                    ) : (
+                      <p></p>
+                    )}
+                    {conv.feedback.length > 0 && (
+                      <p>Feedback: {conv.feedback}</p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
       <div className="chat-input">
         <input
           type="text"
