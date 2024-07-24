@@ -188,4 +188,8 @@
   .cards {
     grid-template-columns: 1fr !important;
   }
+
+  .landingView{
+    margin-top: 100px;
+  }
 }

@@ -117,6 +117,7 @@ const ChatWindow = ({ setConversations }) => {
       {localConversations.length === 0 ? (
         <div className="landingView">
           <div className="content">
+            <h2>How Can I Help You Today?</h2>
             <img src={GptIcon} alt="Gpt" />
             <div className="cards">
               <div className="card">
@@ -163,9 +164,7 @@ const ChatWindow = ({ setConversations }) => {
                       <strong>Bot AI</strong>{" "}
                     </p>
                     <div>
-                      {index === currentIndex
-                        ? typingResponse
-                        : conv.response}
+                      {index === currentIndex ? typingResponse : conv.response}
                     </div>
                   </div>
                 </div>
