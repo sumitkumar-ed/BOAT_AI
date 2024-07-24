@@ -5,7 +5,6 @@ import ChatWindow from "../../components/ChatWindow/ChatWindow";
 import PastConversations from "../PastConversations/PastConversations";
 import "./Home.css";
 import "@fontsource/ubuntu";
-import GptIcon from "../../assets/gpt.svg";
 
 const Home = () => {
   const [view, setView] = useState("chat");
@@ -28,7 +27,6 @@ const Home = () => {
         onClose={closeSidebar}
       />
       <div className="main">
-
         {view === "chat" && (
           <ChatWindow
             conversations={conversations}
